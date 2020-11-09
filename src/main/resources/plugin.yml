@@ -1,0 +1,33 @@
+name: Mendingnerf
+version: ${project.version}
+main: de.minebench.mendingnerf.MendingNerf
+api-version: 1.13
+authors: [Phoenix616]
+description: Nerf Mending by making it limited by repair cost and limit to a max
+softdepend:
+  - ChestShop
+commands:
+  mendingnerf:
+    description: Main plugin command
+    usage: /<command> reload
+    permission: mendingnerf.command.mendingnerf
+  repaircost:
+    description: Show the repaircost of an item
+    usage: /<command> [set <cost>]
+    permission: mendingnerf.command.repaircost
+permissions:
+  mendingnerf.command.mendingnerf:
+    default: op
+    description: Give access to the main plugin command
+  mendingnerf.command.repaircost:
+    default: true
+    description: Give access to the /repaircost command
+  mendingnerf.command.repaircost.set:
+    default: op
+    description: Give access to the /repaircost command
+  mendingnerf.bypass.mending:
+    default: false
+    description: Allow bypassing of mending restrictions
+  mendingnerf.bypass.anvil:
+    default: false
+    description: Allow bypassing of anvil restrictions

@@ -1,0 +1,6 @@
+enabled: true
+default-lang: en
+max-repair-cost: 100
+repair-nerf: true
+increase-cost-step-modifier: 1.0
+repair-cost-modifier: 0.2

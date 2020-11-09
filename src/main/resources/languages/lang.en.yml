@@ -1,0 +1,14 @@
+enabled: "&aMendingNerf is enabled"
+disabled: "&cMendingNerf is disabled"
+reloaded: "&eMendingNerf config reloaded"
+no-player-found: "&cNo player with the name %name% found online?"
+no-item-in-hand: "&cYou don't have an item in your hand!"
+item-not-repairable: "&cYou don't have a repairable item in your hand!"
+set-repaircost: "&eSet repaircost to &b%cost% &e! (Was %oldcost%)"
+invalid-cost: "%input% &c is not a valid integer input for the repaircost!"
+repaircost: "&eRepaircost: &b%cost%"
+# ChestShop /iteminfo additional messages
+chestshop:
+  repair-count: "&fRepaired: &7%count%x"
+  not-repairable: "&cCan no longer be repaired with Mending!"
+  exp-required: "&fExperience required per repair: &7%exp%"
