@@ -1,5 +1,5 @@
-name: Mendingnerf
-version: ${project.version}
+name: MendingNerf
+version: '${minecraft.plugin.version}'
 main: de.minebench.mendingnerf.MendingNerf
 api-version: 1.13
 authors: [Phoenix616]

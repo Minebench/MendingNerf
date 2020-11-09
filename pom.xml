@@ -27,7 +27,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Mendingnerf</name>
+    <name>MendingNerf</name>
 
     <description>Nerf Mending by making it limited by repair cost and limit to a max</description>
 
