@@ -1,6 +1,8 @@
 # MendingNerf
 
-Minecraft (Bukkit) plugin to nerf Mending by making it limited by repair cost. The repair cost also increases (based on a config) when an item is mended with a limit to the repair cost after which any form of repairing will be diesabled.
+Minecraft (Bukkit) plugin to nerf Mending by making it take the item's repair cost into account by adding it to the required experience based on a configurable modifier. (`repair-cost-modifier`)
+
+The repair cost also increases (based on the max durability of the item multiplied by the `increase-cost-step-modifier` config option) when an item is mended with a limit to the repair cost after which any form of repairing will be disabled. (`max-repair-cost`)
 
 Also limits repairing/adding through anvils and features extra info in ChestShop's `/iteminfo` command.
 
@@ -19,10 +21,13 @@ max-repair-cost: 100
 # Whether mending should be nerfed. If disabled then only anvil repairs will be blocked above the max cost.
 mending-nerf: true
 
-# How often the repair cost should be increased (each x mends)
+# The plugin uses the maximum durability of the item which is mended as the basis for the calculation
+# when the repair cost should increase. So a increase-cost-step-modifier of 1 for a diamond pickaxe means
+# that it will increase the cost each 1561s repairs. 0.5 each ~780th etc.
 increase-cost-step-modifier: 1.0
 
-# By how much the cost should be increased each time
+# By how much the required exp for mending one durability should be increased per repair-cost on the item
+# Basically "required exp for 1 repair" = 0.5 + (item repair-cost) * (repair-cost-modifier)
 repair-cost-modifier: 0.2
 ```
 
