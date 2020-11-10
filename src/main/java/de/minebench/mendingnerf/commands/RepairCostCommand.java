@@ -19,7 +19,7 @@ package de.minebench.mendingnerf.commands;
  */
 
 import de.minebench.mendingnerf.MendingNerf;
-import org.bukkit.ChatColor;
+import net.md_5.bungee.api.ChatMessageType;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -45,12 +45,12 @@ public class RepairCostCommand implements CommandExecutor {
         }
         ItemStack itemStack = ((Player) sender).getInventory().getItemInMainHand();
         if (itemStack.getType().isAir()) {
-            sender.spigot().sendMessage(plugin.getLang(sender, "no-item-in-hand"));
+            plugin.sendLang(sender, ChatMessageType.SYSTEM, "no-item-in-hand");
             return true;
         }
         ItemMeta meta = itemStack.getItemMeta();
         if (!(meta instanceof Repairable)) {
-            sender.spigot().sendMessage(plugin.getLang(sender, "item-not-repairable"));
+            plugin.sendLang(sender, ChatMessageType.SYSTEM, "item-not-repairable");
             return true;
         }
 
@@ -59,19 +59,19 @@ public class RepairCostCommand implements CommandExecutor {
                 int oldCost = ((Repairable) meta).getRepairCost();
                 ((Repairable) meta).setRepairCost(Integer.parseInt(args[0]));
                 itemStack.setItemMeta(meta);
-                sender.spigot().sendMessage(plugin.getLang(sender, "set-repaircost",
+                plugin.sendLang(sender, ChatMessageType.SYSTEM, "set-repaircost",
                         "cost", String.valueOf(((Repairable) meta).getRepairCost()),
                         "oldcost", String.valueOf(oldCost)
-                ));
+                );
             } catch (NumberFormatException e) {
-                sender.spigot().sendMessage(plugin.getLang(sender, "invalid-cost",
+                plugin.sendLang(sender, ChatMessageType.SYSTEM, "invalid-cost",
                         "input", args[0]
-                ));
+                );
             }
         } else {
-            sender.spigot().sendMessage(plugin.getLang(sender, "repaircost",
+            plugin.sendLang(sender, ChatMessageType.SYSTEM, "repaircost",
                     "cost", String.valueOf(((Repairable) meta).getRepairCost())
-            ));
+            );
         }
         return true;
     }

@@ -19,6 +19,7 @@ package de.minebench.mendingnerf.listeners;
  */
 
 import de.minebench.mendingnerf.MendingNerf;
+import net.md_5.bungee.api.ChatMessageType;
 import org.bukkit.GameMode;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
@@ -80,6 +81,8 @@ public class NerfListener implements Listener {
         int increaseCostEach = (int) (event.getItem().getType().getMaxDurability() * plugin.getIncreaseCostEachModifier());
         if (((Repairable) meta).getRepairCost() >= plugin.getMaxRepairCost() && itemRepairCount > increaseCostEach && !event.getPlayer().hasPermission("mendingnerf.bypass.mending")) {
             event.setRepairAmount(0);
+            plugin.sendLang(event.getPlayer(), ChatMessageType.ACTION_BAR, "cannot-be-repaired-anymore",
+                    "cost", String.valueOf(((Repairable) meta).getRepairCost()));
             return;
         }
 

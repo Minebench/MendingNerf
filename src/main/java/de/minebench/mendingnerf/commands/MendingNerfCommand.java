@@ -19,6 +19,7 @@ package de.minebench.mendingnerf.commands;
  */
 
 import de.minebench.mendingnerf.MendingNerf;
+import net.md_5.bungee.api.ChatMessageType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -41,7 +42,7 @@ public class MendingNerfCommand implements CommandExecutor {
                 plugin.getConfig().set("enabled", true);
                 plugin.saveConfig();
                 plugin.loadConfig();
-                sender.spigot().sendMessage(plugin.getLang(sender, "enabled"));
+                plugin.sendLang(sender, ChatMessageType.SYSTEM, "enabled");
                 return true;
 
             } else if("disable".equalsIgnoreCase(args[0])) {
@@ -49,15 +50,15 @@ public class MendingNerfCommand implements CommandExecutor {
                 plugin.getConfig().set("enabled", false);
                 plugin.saveConfig();
                 plugin.loadConfig();
-                sender.spigot().sendMessage(plugin.getLang(sender, "disabled"));
+                plugin.sendLang(sender, ChatMessageType.SYSTEM, "disabled");
                 return true;
 
             } else if("reload".equalsIgnoreCase(args[0])) {
                 boolean enabledBefore = plugin.isNerfingEnabled();
                 plugin.loadConfig();
-                sender.spigot().sendMessage(plugin.getLang(sender, "reloaded"));
+                plugin.sendLang(sender, ChatMessageType.SYSTEM, "reloaded");
                 if (enabledBefore != plugin.isNerfingEnabled()) {
-                    sender.spigot().sendMessage(plugin.getLang(sender, plugin.isNerfingEnabled() ? "enabled" : "disabled"));
+                    plugin.sendLang(sender, ChatMessageType.SYSTEM, plugin.isNerfingEnabled() ? "enabled" : "disabled");
                 }
                 return true;
             } else if ("debug".equalsIgnoreCase(args[0])) {
@@ -65,7 +66,7 @@ public class MendingNerfCommand implements CommandExecutor {
                 if (args.length > 1) {
                     target = plugin.getServer().getPlayer(args[1]);
                     if (target == null) {
-                        sender.spigot().sendMessage(plugin.getLang(sender, "no-player-found", "name", args[1]));
+                        plugin.sendLang(sender, ChatMessageType.SYSTEM, "no-player-found", "name", args[1]);
                         return true;
                     }
                 } else if (sender instanceof Player) {
@@ -83,7 +84,7 @@ public class MendingNerfCommand implements CommandExecutor {
                 return true;
             }
         } else {
-            sender.spigot().sendMessage(plugin.getLang(sender, plugin.isNerfingEnabled() ? "enabled" : "disabled"));
+            plugin.sendLang(sender, ChatMessageType.SYSTEM, plugin.isNerfingEnabled() ? "enabled" : "disabled");
         }
         return false;
     }

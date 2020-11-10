@@ -20,6 +20,7 @@ package de.minebench.mendingnerf.listeners;
 
 import com.Acrobot.ChestShop.Events.ItemInfoEvent;
 import de.minebench.mendingnerf.MendingNerf;
+import net.md_5.bungee.api.ChatMessageType;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -45,20 +46,20 @@ public class ChestShopListener implements Listener {
         if (event.getItem().getItemMeta().getPersistentDataContainer().has(plugin.REPAIR_COUNT_KEY, PersistentDataType.INTEGER)) {
             int itemRepairCount = event.getItem().getItemMeta().getPersistentDataContainer().getOrDefault(plugin.REPAIR_COUNT_KEY, PersistentDataType.INTEGER, 0);
 
-            event.getSender().spigot().sendMessage(plugin.getLang(event.getSender(), "chestshop.repair-count",
+            plugin.sendLang(event.getSender(), ChatMessageType.SYSTEM, "chestshop.repair-count",
                     "count", String.valueOf(itemRepairCount)
-            ));
+            );
 
             int increaseCostEach = (int) (event.getItem().getType().getMaxDurability() * plugin.getIncreaseCostEachModifier());
             if (((Repairable) event.getItem().getItemMeta()).getRepairCost() >= plugin.getMaxRepairCost() && itemRepairCount > increaseCostEach) {
-                event.getSender().spigot().sendMessage(plugin.getLang(event.getSender(), "chestshop.not-repairable"));
+                plugin.sendLang(event.getSender(), ChatMessageType.SYSTEM, "chestshop.not-repairable");
                 canBeRepaired = false;
             }
         }
         if (canBeRepaired && event.getItem().getItemMeta().hasEnchant(Enchantment.MENDING)) {
-            event.getSender().spigot().sendMessage(plugin.getLang(event.getSender(), "chestshop.exp-required",
+            plugin.sendLang(event.getSender(), ChatMessageType.SYSTEM, "chestshop.exp-required",
                     "exp", String.valueOf((plugin.getBaseExpForRepair() + ((Repairable) event.getItem().getItemMeta()).getRepairCost() * plugin.getRepairCostModifier()))
-            ));
+            );
         }
     }
 }

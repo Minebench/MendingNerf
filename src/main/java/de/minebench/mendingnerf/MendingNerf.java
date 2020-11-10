@@ -24,7 +24,9 @@ import de.minebench.mendingnerf.listeners.ChestShopListener;
 import de.minebench.mendingnerf.listeners.NerfListener;
 import de.themoep.minedown.MineDown;
 import de.themoep.utils.lang.bukkit.LanguageManager;
+import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.CommandSender;
@@ -32,7 +34,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -78,12 +79,19 @@ public final class MendingNerf extends JavaPlugin {
         repairCostModifier = getConfig().getDouble("repair-cost-modifier");
     }
 
-    public BaseComponent[] getLang(CommandSender sender, String key, String... replacements) {
-        return MineDown.parse(lang.getConfig(sender).get(key), replacements);
+    public void sendLang(CommandSender sender, ChatMessageType messageType, String key, String... replacements) {
+        BaseComponent[] message = getLang(sender, key, replacements);
+        if (message != null && message.length > 0 && !TextComponent.toPlainText(message).isEmpty()) {
+            if (sender instanceof Player) {
+                ((Player) sender).spigot().sendMessage(messageType, message);
+            } else {
+                sender.spigot().sendMessage(message);
+            }
+        }
     }
 
-    public BaseComponent[] getLang(CommandSender sender, String key, Map<String, BaseComponent[]> replacements) {
-        return new MineDown(lang.getConfig(sender).get(key)).replace(replacements).toComponent();
+    public BaseComponent[] getLang(CommandSender sender, String key, String... replacements) {
+        return MineDown.parse(lang.getConfig(sender).get(key), replacements);
     }
 
     public void debug(Player player, String string) {
