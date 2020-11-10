@@ -112,6 +112,8 @@ public class NerfListener implements Listener {
 
             if (increaseRepairCost) {
                 ((Repairable) meta).setRepairCost(((Repairable) meta).getRepairCost() + 1);
+                plugin.sendLang(event.getPlayer(), ChatMessageType.ACTION_BAR, "repair-cost-increased",
+                        "cost", String.valueOf(((Repairable) meta).getRepairCost()));
                 plugin.debug(event.getPlayer(), "increaseCost: " + 1 + " itemRepairCount: " + itemRepairCount);
             }
             updated = true;

@@ -7,6 +7,7 @@ item-not-repairable: "&cDu musst einen reparierbaren Gegenstand in der Hand halt
 set-repaircost: "&eReparaturkosten auf &b%cost% &egesetzt! (Vorher: %oldcost%)"
 invalid-cost: "%input% &c ist keine valide Zahl für die Reparaturkosten!"
 repaircost: "&eReparaturkosten: &b%cost%"
+repair-cost-increased: "&aReparaturkosten haben sich auf &b%cost%&a erhöht"
 cannot-be-repaired-anymore: "&cDein Item kann nichtmehr mit Mending repariert werden!"
 # ChestShop /iteminfo additional messages
 chestshop:

@@ -7,6 +7,7 @@ item-not-repairable: "&cYou don't have a repairable item in your hand!"
 set-repaircost: "&eSet repaircost to &b%cost% &e! (Was %oldcost%)"
 invalid-cost: "%input% &c is not a valid integer input for the repaircost!"
 repaircost: "&eRepaircost: &b%cost%"
+repair-cost-increased: "&aRepair cost increased to &b%cost%"
 cannot-be-repaired-anymore: "&cYour item can no longer be repaired with Mending!"
 # ChestShop /iteminfo additional messages
 chestshop:
