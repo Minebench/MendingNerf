@@ -1,5 +1,6 @@
 enabled: true
 default-lang: en
+base-exp-for-repair: 0.5
 max-repair-cost: 100
 mending-nerf: true
 increase-cost-step-modifier: 1.0

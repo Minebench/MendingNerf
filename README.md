@@ -15,6 +15,11 @@ enabled: true
 # The default language to use when no language file exists for the client's language
 default-lang: en
 
+# How much collected experience is required to repair one durability point.
+# MendingNerf adds additional required exp based on an item's repair cost
+# Vanilla base value is 0.5
+base-exp-for-repair: 0.5
+
 # The maximum that the repair cost can grow to. After that the item can't be repaired
 max-repair-cost: 100
 
@@ -27,7 +32,7 @@ mending-nerf: true
 increase-cost-step-modifier: 1.0
 
 # By how much the required exp for mending one durability should be increased per repair-cost on the item
-# Basically "required exp for 1 repair" = 0.5 + (item repair-cost) * (repair-cost-modifier)
+# Basically "required exp for 1 repair" = (base-exp-for-repair) + (item repair-cost) * (repair-cost-modifier)
 repair-cost-modifier: 0.2
 ```
 

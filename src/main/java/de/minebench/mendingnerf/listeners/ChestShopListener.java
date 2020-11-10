@@ -57,7 +57,7 @@ public class ChestShopListener implements Listener {
         }
         if (canBeRepaired && event.getItem().getItemMeta().hasEnchant(Enchantment.MENDING)) {
             event.getSender().spigot().sendMessage(plugin.getLang(event.getSender(), "chestshop.exp-required",
-                    "exp", String.valueOf((0.5 + ((Repairable) event.getItem().getItemMeta()).getRepairCost() * plugin.getRepairCostModifier()))
+                    "exp", String.valueOf((plugin.getBaseExpForRepair() + ((Repairable) event.getItem().getItemMeta()).getRepairCost() * plugin.getRepairCostModifier()))
             ));
         }
     }

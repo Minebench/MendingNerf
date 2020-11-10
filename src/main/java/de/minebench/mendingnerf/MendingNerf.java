@@ -50,6 +50,7 @@ public final class MendingNerf extends JavaPlugin {
     private Set<UUID> debugPlayers = new HashSet<>();
 
     private LanguageManager lang;
+    private double baseExpForRepair;
 
     @Override
     public void onEnable() {
@@ -72,6 +73,7 @@ public final class MendingNerf extends JavaPlugin {
         nerfEnabled = getConfig().getBoolean("enabled");
         mendingNerf = getConfig().getBoolean("mending-nerf");
         maxRepairCost = getConfig().getInt("max-repair-cost");
+        baseExpForRepair = getConfig().getDouble("base-exp-for-repair");
         increaseCostEachModifier = getConfig().getInt("increase-cost-step-modifier");
         repairCostModifier = getConfig().getDouble("repair-cost-modifier");
     }
@@ -116,5 +118,9 @@ public final class MendingNerf extends JavaPlugin {
 
     public double getRepairCostModifier() {
         return repairCostModifier;
+    }
+
+    public double getBaseExpForRepair() {
+        return baseExpForRepair;
     }
 }
