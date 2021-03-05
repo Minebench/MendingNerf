@@ -75,7 +75,7 @@ public final class MendingNerf extends JavaPlugin {
         mendingNerf = getConfig().getBoolean("mending-nerf");
         maxRepairCost = getConfig().getInt("max-repair-cost");
         baseExpForRepair = getConfig().getDouble("base-exp-for-repair");
-        increaseCostEachModifier = getConfig().getInt("increase-cost-step-modifier");
+        increaseCostEachModifier = getConfig().getDouble("increase-cost-step-modifier");
         repairCostModifier = getConfig().getDouble("repair-cost-modifier");
     }
 
