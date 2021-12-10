@@ -93,10 +93,10 @@ public class NerfListener implements Listener {
         boolean updated = false;
         plugin.debug(event.getPlayer(), "repairAmount: " + event.getRepairAmount() + " exp: " + event.getExperienceOrb().getExperience() + " repairCost: " + ((Repairable) meta).getRepairCost());
         plugin.debug(event.getPlayer(), "expNeeded: " + expNeeded + " itemRepairCount: " + itemRepairCount + " availableExp: " + availableExp);
-        if (availableExp >= expNeeded) {
+        if (availableExp >= expNeeded * 2) {
             int repairTimes = (int) (availableExp / expNeeded);
             int maxRepair = ((Damageable) meta).getDamage();
-            repairTimes = repairTimes > maxRepair ? maxRepair : repairTimes;
+            repairTimes = Math.min(repairTimes, maxRepair);
             event.setRepairAmount(repairTimes);
             boolean increaseRepairCost = itemRepairCount % increaseCostEach + repairTimes >= increaseCostEach;
             itemRepairCount += repairTimes;
@@ -118,8 +118,10 @@ public class NerfListener implements Listener {
             }
             updated = true;
         } else {
-            event.setRepairAmount(0);
+            //event.setRepairAmount(0);
+            event.setCancelled(true);
         }
+        /*
         event.getExperienceOrb().setExperience(0);
         if (availableExp == 0) {
             if (dataContainer.has( plugin.STORED_EXP_KEY, PersistentDataType.DOUBLE)) {
@@ -129,7 +131,7 @@ public class NerfListener implements Listener {
         } else {
             dataContainer.set( plugin.STORED_EXP_KEY, PersistentDataType.DOUBLE, availableExp);
             updated = true;
-        }
+        }*/
         if (updated) {
             event.getItem().setItemMeta(meta);
         }
