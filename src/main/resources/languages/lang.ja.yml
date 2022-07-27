@@ -1,0 +1,16 @@
+enabled: "&aMendingNerfは有効です"
+disabled: "&cMendingNerfは無効です"
+reloaded: "&eMendingNerfの設定を再読込しました"
+no-player-found: "&c%name%という名前のプレイヤーはオンラインで見つかりませんでした"
+no-item-in-hand: "&c手に持っているアイテムがありません！"
+item-not-repairable: "&c手に修理可能なアイテムがありません！"
+set-repaircost: "&e修理コストを&b%cost%&eに設定しました！(%oldcost%でした)"
+invalid-cost: "%input%&cは修理コストの有効な整数入力ではありません！"
+repaircost: "&e修理コスト: &b%cost%"
+repair-cost-increased: "&a修理コストが&b%cost%&aに増加しました"
+cannot-be-repaired-anymore: "&c修繕で修理ができなくなりました"
+# ChestShop /iteminfo additional messages
+chestshop:
+  repair-count: "&f修理: &7%count%x"
+  not-repairable: "&c修繕による修理ができません！"
+  exp-required: "&f修理ごとに必要な経験: &7%exp%"
